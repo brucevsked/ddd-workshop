@@ -33,4 +33,15 @@ public class UserRepository {
                 .filter(user -> Arrays.asList(user.getLabels()).stream().anyMatch(l -> l.equalsIgnoreCase(key)))
                 .collect(Collectors.toList());
     }
+
+    public void create(User user) {
+        userList.add(user);   
+    }
+
+    public User findById(String id) {
+        return userList.stream()
+                .filter(user -> id.equals(user.getId()))
+                .findFirst()
+                .orElse(null);
+    }
 }

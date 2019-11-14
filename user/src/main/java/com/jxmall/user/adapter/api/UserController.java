@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
-import java.util.UUID;
 
 import javax.websocket.server.PathParam;
 
-import com.jxmall.user.domain.aggregate.user.UserServices;
+import com.jxmall.user.domain.aggregate.user.UserService;
 import com.jxmall.user.domain.aggregate.user.root.User;
 
 @RestController
@@ -23,23 +22,23 @@ import com.jxmall.user.domain.aggregate.user.root.User;
 public class UserController {
 
     @Autowired
-    private UserServices userServices;
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<List<User>> search(@RequestParam("key") String key) {
-        List<User> userList = userServices.search(key);
+        List<User> userList = userService.search(key);
         return ResponseEntity.ok(userList);
     }
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody User user, UriComponentsBuilder builder) {
-        user.setId(UUID.randomUUID().toString());
+        userService.create(user);
         return ResponseEntity.created(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri()).build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> load(@PathParam("id") String id) {
-        System.out.println("id : " + id);
+        User user = userService.findById(id);
         return ResponseEntity.ok(new User());
     }
 }
