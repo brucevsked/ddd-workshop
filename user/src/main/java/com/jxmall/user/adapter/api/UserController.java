@@ -25,8 +25,7 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<User>> search(@RequestParam("key") String key) {
-        List<User> userList = userService.search(key);
-        return ResponseEntity.ok(userList);
+        return ResponseEntity.ok(userService.search(key));
     }
 
     @PostMapping

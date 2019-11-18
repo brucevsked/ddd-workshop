@@ -1,0 +1,42 @@
+package com.jxmall.activity.qualification.adapter.api;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.util.List;
+
+import com.jxmall.activity.qualification.domain.aggregate.activity.ActivityQualificationService;
+import com.jxmall.activity.qualification.domain.aggregate.activity.root.ActivityQualification;
+
+@RestController
+@RequestMapping("/activity_qualifications")
+public class ActivityQualificationController {
+
+    @Autowired
+    private ActivityQualificationService activityQualificationService;
+
+    @GetMapping
+    public ResponseEntity<List<ActivityQualification>> search(@RequestParam("key") String key) {
+        return ResponseEntity.ok(activityQualificationService.search(key));
+    }
+
+    @PostMapping
+    public ResponseEntity create(@RequestBody ActivityQualification activitie, UriComponentsBuilder builder) {
+        activityQualificationService.create(activitie);
+        return ResponseEntity.created(builder.path("/activity_qualifications/{id}").buildAndExpand(activitie.getId()).toUri())
+                .build();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ActivityQualification> findById(@PathVariable("id") String id) {
+        return ResponseEntity.ok(activityQualificationService.findById(id));
+    }
+}

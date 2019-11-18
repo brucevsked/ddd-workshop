@@ -25,8 +25,7 @@ public class ActivitieController {
 
     @GetMapping
     public ResponseEntity<List<Activitie>> search(@RequestParam("key") String key) {
-        List<Activitie> activitieList = activitieService.search(key);
-        return ResponseEntity.ok(activitieList);
+        return ResponseEntity.ok(activitieService.search(key));
     }
 
     @PostMapping

@@ -14,39 +14,34 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ActivitieRepository {
 
-    private static List<Activitie> activitieList = new ArrayList<Activitie>();
+    private static List<Activitie> dataList = new ArrayList<Activitie>();
 
     static {
-        activitieList.add(new Activitie(UUID.randomUUID().toString(), "李白", "zs@thoughtworks.com", "广东.深圳.南山", 30,
-                new String[] { "IT男", "男", "宅男" }));
-        activitieList.add(new Activitie(UUID.randomUUID().toString(), "杜甫", "ls@thoughtworks.com", "广东.深圳.龙岗", 16,
-                new String[] { "用户体验设计师", "女", "时尚达人" }));
-        activitieList.add(new Activitie(UUID.randomUUID().toString(), "王维", "zd@thoughtworks.com", "广东.深圳.罗湖", 28,
-                new String[] { "业务需求分析师", "女", "美装达人" }));
-        activitieList.add(new Activitie(UUID.randomUUID().toString(), "白居易", "bjy@thoughtworks.com", "广东.深圳.盐田", 32,
-                new String[] { "项目经理", "男", "美食达人" }));
-        activitieList.add(new Activitie(UUID.randomUUID().toString(), "陆游", "ly@thoughtworks.com", "广东.深圳.坪山", 34,
-                new String[] { "质量保障师", "男", "职场老者" }));
+        dataList.add(new Activitie(UUID.randomUUID().toString(), "IT论坛", "IT界精英齐聚一趟，交流技术，产生共鸣", "广东.深圳.南山",
+                new String[] { "IT", "技术论坛", "技术交流" }));
+        dataList.add(new Activitie(UUID.randomUUID().toString(), "技术峰会", "技术峰会，邀请业界技术大牛参与", "广东.深圳.罗湖",
+                new String[] { "IT", "峰会", "技术论坛", "技术交流" }));
+        dataList.add(new Activitie(UUID.randomUUID().toString(), "Ruby技术交流", "Ruby是世界上最好的开发语言，由华为发起", "广东.深圳.福田",
+                new String[] { "IT", "Ruby", "PHP", "编程语言", "华为" }));
+        dataList.add(new Activitie(UUID.randomUUID().toString(), "DDD Workshop", "领域驱动设计，Thoughtworks一直致力于微服务的推广", "广东.深圳.盐田",
+                new String[] { "IT", "DDD", "Workshop", "微服务", "Workshop" }));
     }
 
     public List<Activitie> search(String key) {
         if(Strings.isEmpty(key)) {
-            return activitieList;
+            return dataList;
         }
-        return activitieList.stream()
+        return dataList.stream()
                 .filter(activitie -> Arrays.asList(activitie.getLabels()).stream().anyMatch(l -> l.equalsIgnoreCase(key)))
                 .collect(Collectors.toList());
     }
 
     public void create(Activitie activitie) {
-        activitieList.add(activitie);
-        System.out.println(activitieList.size());
+        dataList.add(activitie);
     }
 
     public Activitie findById(String id) {
-        System.out.println(id);
-        System.out.println(activitieList.size());
-        return activitieList.stream()
+        return dataList.stream()
                 .filter(activitie -> id.equals(activitie.getId()))
                 .findFirst()
                 .orElse(null);

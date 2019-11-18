@@ -1,4 +1,4 @@
-package com.jxmall.activitie.domain.aggregate.activitie.root;
+package com.jxmall.activity.qualification.domain.aggregate.activity.root;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,14 +7,16 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Activitie {
+public class ActivityQualification {
     private String id;
 
     private String name;
 
-    private String content;
+    private String email;
 
     private String address;
+
+    private int age;
 
     private String[] labels;
 }
