@@ -17,7 +17,7 @@ import com.jxmall.user.application.UserApplication;
 import com.jxmall.user.domain.aggregate.user.root.User;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/jxmall/users")
 public class UserController {
 
     @Autowired

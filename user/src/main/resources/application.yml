@@ -1,2 +1,6 @@
 server:
-  port: 8080
+  port: 9000
+activity:
+  server:
+    api:
+      create: http://localhost:9001/jxmall/activities
