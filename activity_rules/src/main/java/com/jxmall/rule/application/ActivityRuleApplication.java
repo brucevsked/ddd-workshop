@@ -26,4 +26,8 @@ public class ActivityRuleApplication {
 		return activityRuleService.findById(id);
 	}
 
+	public ActivityRule findByMonth(int month) {
+		return activityRuleService.findByMonth(month);
+	}
+
 }

@@ -6,6 +6,7 @@ import com.jxmall.activity.qualification.domain.aggregate.activity.ActivityQuali
 import com.jxmall.activity.qualification.domain.aggregate.activity.root.ActivityQualification;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,6 +25,10 @@ public class ActivityQualificationApplication {
 
 	public ActivityQualification findById(String id){
 		return activityQualificationService.findById(id);
+	}
+
+	public ActivityQualification getCurrentActivityQualification() {
+		return activityQualificationService.getCurrentActivityQualification();
 	}
 
 }

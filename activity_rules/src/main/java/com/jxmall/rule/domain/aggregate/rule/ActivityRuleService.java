@@ -30,4 +30,8 @@ public class ActivityRuleService{
 		}
 		return repository.findById(id);
 	}
+
+	public ActivityRule findByMonth(int month) {
+		return repository.findByMonth(month);
+	}
 }

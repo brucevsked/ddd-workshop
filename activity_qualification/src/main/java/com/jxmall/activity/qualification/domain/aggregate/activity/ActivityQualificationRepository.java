@@ -11,4 +11,6 @@ public interface ActivityQualificationRepository {
     void create(ActivityQualification activityQualification);
 
     ActivityQualification findById(String id);
+
+    List<ActivityQualification> getAllActivityQualification();
 }

@@ -1,4 +1,4 @@
-package com.jxmall.activity.domain.aggregate.activity;
+package com.jxmall.activity.adapter.persistence;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import com.jxmall.activity.domain.aggregate.activity.ActivityRepository;
 import com.jxmall.activity.domain.aggregate.activity.root.Activity;
 
 import org.apache.logging.log4j.util.Strings;

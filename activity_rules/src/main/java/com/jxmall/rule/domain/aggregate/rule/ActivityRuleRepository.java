@@ -11,4 +11,6 @@ public interface ActivityRuleRepository {
     void create(ActivityRule ActivityRule);
 
     ActivityRule findById(String id);
+
+	ActivityRule findByMonth(int month);
 }

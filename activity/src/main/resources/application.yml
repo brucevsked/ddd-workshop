@@ -1,2 +1,15 @@
 server:
   port: 9001
+activity:
+  rule:
+    server:
+      api:
+        month: http://localhost:9006/jxmall/activity_rules/month/{month}
+  qualification:
+    server:
+      api:
+        current: http://localhost:9005/jxmall/activity_qualifications/current-date
+  benefit:
+    server:
+      api:
+        source: http://localhost:9002/jxmall/activity_benefits/source/{source}

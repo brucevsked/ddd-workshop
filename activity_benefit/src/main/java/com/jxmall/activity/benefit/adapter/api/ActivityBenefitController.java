@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
 import com.jxmall.activity.benefit.application.ActivityBenefitApplication;
@@ -18,6 +20,7 @@ import com.jxmall.activity.benefit.domain.aggregate.activity.root.ActivityBenefi
 
 @RestController
 @RequestMapping("/jxmall/activity_benefits")
+@Slf4j
 public class ActivityBenefitController {
 
     @Autowired
@@ -38,5 +41,11 @@ public class ActivityBenefitController {
     @GetMapping("/{id}")
     public ResponseEntity<ActivityBenefit> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityBenefitApplication.findById(id));
+    }
+
+    @GetMapping("/source/{source}")
+    public ResponseEntity<ActivityBenefit> findBySource(@PathVariable("source") int source) {
+        log.debug("source : {source}", source);
+        return ResponseEntity.ok(activityBenefitApplication.findBySource(source));
     }
 }

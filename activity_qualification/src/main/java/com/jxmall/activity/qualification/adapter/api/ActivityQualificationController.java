@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
 import com.jxmall.activity.qualification.application.ActivityQualificationApplication;
@@ -18,6 +20,7 @@ import com.jxmall.activity.qualification.domain.aggregate.activity.root.Activity
 
 @RestController
 @RequestMapping("/jxmall/activity_qualifications")
+@Slf4j
 public class ActivityQualificationController {
 
     @Autowired
@@ -38,5 +41,11 @@ public class ActivityQualificationController {
     @GetMapping("/{id}")
     public ResponseEntity<ActivityQualification> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityQualificationApplication.findById(id));
+    }
+
+    @GetMapping("/current-date")
+    public ResponseEntity<ActivityQualification> getCurrentActivityQualification(){
+        log.debug("current-data");
+        return ResponseEntity.ok(activityQualificationApplication.getCurrentActivityQualification());
     }
 }

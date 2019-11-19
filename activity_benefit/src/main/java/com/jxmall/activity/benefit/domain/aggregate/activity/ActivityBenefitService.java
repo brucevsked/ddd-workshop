@@ -30,4 +30,11 @@ public class ActivityBenefitService {
 		}
 		return repository.findById(id);
 	}
+
+	public ActivityBenefit findBySource(int source) {
+		if(source == 0){
+			return null;
+		}
+		return repository.findBySource(source);
+	}
 }

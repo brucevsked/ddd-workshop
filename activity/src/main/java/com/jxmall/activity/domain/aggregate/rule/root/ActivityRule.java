@@ -1,4 +1,4 @@
-package com.jxmall.activity.benefit.domain.aggregate.activity.root;
+package com.jxmall.activity.domain.aggregate.rule.root;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ActivityBenefit {
+public class ActivityRule {
     private String id;
 
-    private int source;
+    private int month;
 
-    private int money;
+    private int source;
 }
+

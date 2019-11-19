@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.List;
 
 import com.jxmall.rule.application.ActivityRuleApplication;
@@ -18,6 +20,7 @@ import com.jxmall.rule.domain.aggregate.rule.root.ActivityRule;
 
 @RestController
 @RequestMapping("/jxmall/activity_rules")
+@Slf4j
 public class ActivityRuleController {
 
     @Autowired
@@ -37,5 +40,11 @@ public class ActivityRuleController {
     @GetMapping("/{id}")
     public ResponseEntity<ActivityRule> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityRuleApplication.findById(id));
+    }
+
+    @GetMapping("/month/{month}")
+    public ResponseEntity<ActivityRule> findByMonth(@PathVariable("month") int month) {
+        log.debug("month:{}", month);
+        return ResponseEntity.ok(activityRuleApplication.findByMonth(month));
     }
 }

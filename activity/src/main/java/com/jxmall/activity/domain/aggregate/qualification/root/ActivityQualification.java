@@ -1,6 +1,4 @@
-package com.jxmall.activity.qualification.domain.aggregate.activity.root;
-
-
+package com.jxmall.activity.domain.aggregate.qualification.root;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;

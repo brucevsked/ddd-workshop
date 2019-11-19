@@ -1,4 +1,4 @@
-package com.jxmall.activity.benefit.domain.aggregate.activity.root;
+package com.jxmall.activity.domain.aggregate.benefit.root;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

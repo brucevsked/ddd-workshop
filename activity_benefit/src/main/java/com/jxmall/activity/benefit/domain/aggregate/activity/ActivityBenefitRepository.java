@@ -11,4 +11,6 @@ public interface ActivityBenefitRepository {
     void create(ActivityBenefit activityBenefit);
 
     ActivityBenefit findById(String id);
+
+	ActivityBenefit findBySource(int source);
 }

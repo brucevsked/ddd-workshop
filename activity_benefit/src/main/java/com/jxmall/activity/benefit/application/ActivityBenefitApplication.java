@@ -26,4 +26,8 @@ public class ActivityBenefitApplication {
         return activityBenefitService.findById(id);
     }
 
+	public ActivityBenefit findBySource(int source) {
+		return activityBenefitService.findBySource(source);
+	}
+
 }
