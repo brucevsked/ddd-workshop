@@ -1,15 +1,29 @@
 package com.jxmall.activity.benefit.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import com.jxmall.activity.benefit.domain.aggregate.activity.root.ActivityBenefit;
+import com.jxmall.activity.benefit.domain.aggregate.activity.ActivityBenefitService;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.activity.benefit"})
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ActivityBenefitApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ActivityBenefitApplication.class, args);
-	}
+    @Autowired
+    private ActivityBenefitService activityBenefitService;
+
+    public List<ActivityBenefit> search(String key) {
+        return activityBenefitService.search(key);
+    }
+
+    public void create(ActivityBenefit activityBenefit) {
+        activityBenefitService.create(activityBenefit);
+    }
+
+    public ActivityBenefit findById(String id) {
+        return activityBenefitService.findById(id);
+    }
 
 }

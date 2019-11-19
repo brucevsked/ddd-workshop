@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.activity.qualification.domain.aggregate.activity.ActivityQualificationService;
+import com.jxmall.activity.qualification.application.ActivityQualificationApplication;
 import com.jxmall.activity.qualification.domain.aggregate.activity.root.ActivityQualification;
 
 @RestController
@@ -21,22 +21,22 @@ import com.jxmall.activity.qualification.domain.aggregate.activity.root.Activity
 public class ActivityQualificationController {
 
     @Autowired
-    private ActivityQualificationService activityQualificationService;
+    private ActivityQualificationApplication activityQualificationApplication;
 
     @GetMapping
     public ResponseEntity<List<ActivityQualification>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activityQualificationService.search(key));
+        return ResponseEntity.ok(activityQualificationApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity create(@RequestBody ActivityQualification activitie, UriComponentsBuilder builder) {
-        activityQualificationService.create(activitie);
+        activityQualificationApplication.create(activitie);
         return ResponseEntity.created(builder.path("/activity_qualifications/{id}").buildAndExpand(activitie.getId()).toUri())
                 .build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ActivityQualification> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activityQualificationService.findById(id));
+        return ResponseEntity.ok(activityQualificationApplication.findById(id));
     }
 }

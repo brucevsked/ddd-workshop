@@ -1,15 +1,28 @@
 package com.jxmall.user.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import java.util.List;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.user"})
+import com.jxmall.user.domain.aggregate.user.UserService;
+import com.jxmall.user.domain.aggregate.user.root.User;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(UserApplication.class, args);
+	@Autowired
+	private UserService userService;
+
+	public List<User> search(String key) {
+		return userService.search(key);
 	}
 
+	public void create(User user) {
+		userService.create(user);
+	}
+
+	public User findById(String id) {
+		return userService.findById(id);
+	}
 }

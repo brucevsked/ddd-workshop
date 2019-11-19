@@ -1,15 +1,28 @@
 package com.jxmall.activity.channel.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import java.util.List;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.activity.channel"})
+import com.jxmall.activity.channel.domain.aggregate.activity.root.ActivityChannel;
+import com.jxmall.activity.channel.domain.aggregate.activity.ActivityChannelService;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ActivityChannelApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ActivityChannelApplication.class, args);
-	}
+    @Autowired
+    private ActivityChannelService activityChannelService;
 
+    public List<ActivityChannel> search(String key) {
+        return activityChannelService.search(key);
+    }
+
+    public void create(ActivityChannel activityChannel) {
+        activityChannelService.create(activityChannel);
+    }
+
+    public ActivityChannel findById(String id) {
+        return activityChannelService.findById(id);
+    }
 }

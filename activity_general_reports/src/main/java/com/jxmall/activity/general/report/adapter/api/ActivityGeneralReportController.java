@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.activity.general.report.domain.aggregate.activity.ActivityGeneralReportService;
+import com.jxmall.activity.general.report.application.ActivityGeneralReportApplication;
 import com.jxmall.activity.general.report.domain.aggregate.activity.root.ActivityGeneralReport;
 
 @RestController
@@ -21,22 +21,22 @@ import com.jxmall.activity.general.report.domain.aggregate.activity.root.Activit
 public class ActivityGeneralReportController {
 
     @Autowired
-    private ActivityGeneralReportService activityGeneralReportService;
+    private ActivityGeneralReportApplication activityGeneralReportApplication;
 
     @GetMapping
     public ResponseEntity<List<ActivityGeneralReport>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activityGeneralReportService.search(key));
+        return ResponseEntity.ok(activityGeneralReportApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity create(@RequestBody ActivityGeneralReport activitieGeneralReport, UriComponentsBuilder builder) {
-        activityGeneralReportService.create(activitieGeneralReport);
+        activityGeneralReportApplication.create(activitieGeneralReport);
         return ResponseEntity.created(builder.path("/activity_general_reports/{id}").buildAndExpand(activitieGeneralReport.getId()).toUri())
                 .build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ActivityGeneralReport> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activityGeneralReportService.findById(id));
+        return ResponseEntity.ok(activityGeneralReportApplication.findById(id));
     }
 }

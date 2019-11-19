@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.activity.channel.domain.aggregate.activity.ActivityChannelService;
+import com.jxmall.activity.channel.application.ActivityChannelApplication;
 import com.jxmall.activity.channel.domain.aggregate.activity.root.ActivityChannel;
 
 @RestController
@@ -21,22 +21,22 @@ import com.jxmall.activity.channel.domain.aggregate.activity.root.ActivityChanne
 public class ActivityChannelController {
 
     @Autowired
-    private ActivityChannelService activityChannelService;
+    private ActivityChannelApplication activityChannelApplication;
 
     @GetMapping
     public ResponseEntity<List<ActivityChannel>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activityChannelService.search(key));
+        return ResponseEntity.ok(activityChannelApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity create(@RequestBody ActivityChannel activitieChannel, UriComponentsBuilder builder) {
-        activityChannelService.create(activitieChannel);
+        activityChannelApplication.create(activitieChannel);
         return ResponseEntity.created(builder.path("/activity_channels/{id}").buildAndExpand(activitieChannel.getId()).toUri())
                 .build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ActivityChannel> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activityChannelService.findById(id));
+        return ResponseEntity.ok(activityChannelApplication.findById(id));
     }
 }

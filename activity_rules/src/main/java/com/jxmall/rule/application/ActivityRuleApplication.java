@@ -1,15 +1,29 @@
 package com.jxmall.rule.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import java.util.List;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.rule"})
+import com.jxmall.rule.domain.aggregate.rule.ActivityRuleService;
+import com.jxmall.rule.domain.aggregate.rule.root.ActivityRule;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ActivityRuleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ActivityRuleApplication.class, args);
+	@Autowired
+	private ActivityRuleService activityRuleService;
+
+	public List<ActivityRule> search(String key) {
+		return activityRuleService.search(key);
+	}
+
+	public void create(ActivityRule ActivityRule) {
+		activityRuleService.create(ActivityRule);
+	}
+
+	public ActivityRule findById(String id) {
+		return activityRuleService.findById(id);
 	}
 
 }

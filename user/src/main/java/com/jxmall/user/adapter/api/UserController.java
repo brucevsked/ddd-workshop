@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.user.domain.aggregate.user.UserService;
+import com.jxmall.user.application.UserApplication;
 import com.jxmall.user.domain.aggregate.user.root.User;
 
 @RestController
@@ -21,21 +21,21 @@ import com.jxmall.user.domain.aggregate.user.root.User;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserApplication userApplication;
 
     @GetMapping
     public ResponseEntity<List<User>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(userService.search(key));
+        return ResponseEntity.ok(userApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody User user, UriComponentsBuilder builder) {
-        userService.create(user);
+        userApplication.create(user);
         return ResponseEntity.created(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri()).build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<User> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(userService.findById(id));
+        return ResponseEntity.ok(userApplication.findById(id));
     }
 }

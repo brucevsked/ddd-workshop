@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.activity.benefit.domain.aggregate.activity.ActivityBenefitService;
+import com.jxmall.activity.benefit.application.ActivityBenefitApplication;
 import com.jxmall.activity.benefit.domain.aggregate.activity.root.ActivityBenefit;
 
 @RestController
@@ -21,22 +21,22 @@ import com.jxmall.activity.benefit.domain.aggregate.activity.root.ActivityBenefi
 public class ActivityBenefitController {
 
     @Autowired
-    private ActivityBenefitService activityBenefitService;
+    private ActivityBenefitApplication activityBenefitApplication;
 
     @GetMapping
     public ResponseEntity<List<ActivityBenefit>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activityBenefitService.search(key));
+        return ResponseEntity.ok(activityBenefitApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity create(@RequestBody ActivityBenefit activitie, UriComponentsBuilder builder) {
-        activityBenefitService.create(activitie);
+        activityBenefitApplication.create(activitie);
         return ResponseEntity.created(builder.path("/activity_benefit/{id}").buildAndExpand(activitie.getId()).toUri())
                 .build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ActivityBenefit> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activityBenefitService.findById(id));
+        return ResponseEntity.ok(activityBenefitApplication.findById(id));
     }
 }

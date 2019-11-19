@@ -1,15 +1,28 @@
 package com.jxmall.activity.general.report.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import java.util.List;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.activity.general.report"})
+import com.jxmall.activity.general.report.domain.aggregate.activity.ActivityGeneralReportService;
+import com.jxmall.activity.general.report.domain.aggregate.activity.root.ActivityGeneralReport;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ActivityGeneralReportApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ActivityGeneralReportApplication.class, args);
+    @Autowired
+    public ActivityGeneralReportService activityGeneralReportService;
+
+    public List<ActivityGeneralReport> search(String key) {
+		return activityGeneralReportService.search(key);
 	}
 
+	public void create(ActivityGeneralReport activityGeneralReport) {
+		activityGeneralReportService.create(activityGeneralReport);
+	}
+
+	public ActivityGeneralReport findById(String id){
+		return activityGeneralReportService.findById(id);
+	}
 }

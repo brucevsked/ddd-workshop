@@ -13,6 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
+import com.jxmall.activitie.application.ActivitieApplication;
 import com.jxmall.activitie.domain.aggregate.activitie.ActivitieService;
 import com.jxmall.activitie.domain.aggregate.activitie.root.Activitie;
 
@@ -21,22 +22,22 @@ import com.jxmall.activitie.domain.aggregate.activitie.root.Activitie;
 public class ActivitieController {
 
     @Autowired
-    private ActivitieService activitieService;
+    private ActivitieApplication activitieApplication;
 
     @GetMapping
     public ResponseEntity<List<Activitie>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activitieService.search(key));
+        return ResponseEntity.ok(activitieApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody Activitie activitie, UriComponentsBuilder builder) {
-        activitieService.create(activitie);
+        activitieApplication.create(activitie);
         return ResponseEntity.created(builder.path("/activities/{id}").buildAndExpand(activitie.getId()).toUri())
                 .build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Activitie> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activitieService.findById(id));
+        return ResponseEntity.ok(activitieApplication.findById(id));
     }
 }

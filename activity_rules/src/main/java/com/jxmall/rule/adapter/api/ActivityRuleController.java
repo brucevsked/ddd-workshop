@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-import com.jxmall.rule.domain.aggregate.rule.ActivityRuleService;
+import com.jxmall.rule.application.ActivityRuleApplication;
 import com.jxmall.rule.domain.aggregate.rule.root.ActivityRule;
 
 @RestController
@@ -21,21 +21,21 @@ import com.jxmall.rule.domain.aggregate.rule.root.ActivityRule;
 public class ActivityRuleController {
 
     @Autowired
-    private ActivityRuleService activityRuleService;
+    private ActivityRuleApplication activityRuleApplication;
 
     @GetMapping
     public ResponseEntity<List<ActivityRule>> search(@RequestParam("key") String key) {
-        return ResponseEntity.ok(activityRuleService.search(key));
+        return ResponseEntity.ok(activityRuleApplication.search(key));
     }
 
     @PostMapping
     public ResponseEntity<String> create(@RequestBody ActivityRule rule, UriComponentsBuilder builder) {
-        activityRuleService.create(rule);
+        activityRuleApplication.create(rule);
         return ResponseEntity.created(builder.path("/activity_rules/{id}").buildAndExpand(rule.getId()).toUri()).build();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ActivityRule> findById(@PathVariable("id") String id) {
-        return ResponseEntity.ok(activityRuleService.findById(id));
+        return ResponseEntity.ok(activityRuleApplication.findById(id));
     }
 }

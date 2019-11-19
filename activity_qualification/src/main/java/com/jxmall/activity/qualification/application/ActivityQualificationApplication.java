@@ -1,15 +1,29 @@
 package com.jxmall.activity.qualification.application;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+import java.util.List;
 
-@SpringBootApplication
-@ComponentScan(value = {"com.jxmall.activity.qualification"})
+import com.jxmall.activity.qualification.domain.aggregate.activity.ActivityQualificationService;
+import com.jxmall.activity.qualification.domain.aggregate.activity.root.ActivityQualification;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
 public class ActivityQualificationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ActivityQualificationApplication.class, args);
+    @Autowired
+    public ActivityQualificationService activityQualificationService;
+
+    public List<ActivityQualification> search(String key) {
+		return activityQualificationService.search(key);
+	}
+
+	public void create(ActivityQualification activityQualification) {
+		activityQualificationService.create(activityQualification);
+	}
+
+	public ActivityQualification findById(String id){
+		return activityQualificationService.findById(id);
 	}
 
 }
