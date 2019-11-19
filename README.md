@@ -2,6 +2,8 @@
 各服务与文件夹对应关系说明
 ![content.png](content.png)
 
+领域故事与架构说明
+![domain.png](domain.png)
 
 # 使用技术:
 - Spring boot
