@@ -17,7 +17,7 @@ import com.jxmall.rule.application.ActivityRuleApplication;
 import com.jxmall.rule.domain.aggregate.rule.root.ActivityRule;
 
 @RestController
-@RequestMapping("/activity_rules")
+@RequestMapping("/jxmall/activity_rules")
 public class ActivityRuleController {
 
     @Autowired

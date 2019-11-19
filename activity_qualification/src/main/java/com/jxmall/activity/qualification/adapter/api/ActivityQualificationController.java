@@ -17,7 +17,7 @@ import com.jxmall.activity.qualification.application.ActivityQualificationApplic
 import com.jxmall.activity.qualification.domain.aggregate.activity.root.ActivityQualification;
 
 @RestController
-@RequestMapping("/activity_qualifications")
+@RequestMapping("/jxmall/activity_qualifications")
 public class ActivityQualificationController {
 
     @Autowired

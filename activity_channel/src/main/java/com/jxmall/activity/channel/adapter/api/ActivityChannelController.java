@@ -17,7 +17,7 @@ import com.jxmall.activity.channel.application.ActivityChannelApplication;
 import com.jxmall.activity.channel.domain.aggregate.activity.root.ActivityChannel;
 
 @RestController
-@RequestMapping("/activity_channels")
+@RequestMapping("/jxmall/activity_channels")
 public class ActivityChannelController {
 
     @Autowired

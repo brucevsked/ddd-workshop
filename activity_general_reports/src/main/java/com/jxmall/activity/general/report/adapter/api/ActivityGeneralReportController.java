@@ -17,7 +17,7 @@ import com.jxmall.activity.general.report.application.ActivityGeneralReportAppli
 import com.jxmall.activity.general.report.domain.aggregate.activity.root.ActivityGeneralReport;
 
 @RestController
-@RequestMapping("/activity_general_reports")
+@RequestMapping("/jxmall/activity_general_reports")
 public class ActivityGeneralReportController {
 
     @Autowired

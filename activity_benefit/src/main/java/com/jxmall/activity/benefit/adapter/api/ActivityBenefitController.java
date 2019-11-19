@@ -17,7 +17,7 @@ import com.jxmall.activity.benefit.application.ActivityBenefitApplication;
 import com.jxmall.activity.benefit.domain.aggregate.activity.root.ActivityBenefit;
 
 @RestController
-@RequestMapping("/activity_benefits")
+@RequestMapping("/jxmall/activity_benefits")
 public class ActivityBenefitController {
 
     @Autowired
