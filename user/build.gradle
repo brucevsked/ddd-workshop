@@ -20,7 +20,7 @@ repositories {
 
 dependencyManagement {
 	imports {
-		mavenBom 'om.huawei.paas.cse:cse-dependency:6.5.59'
+		mavenBom 'com.huawei.paas.cse:cse-dependency:6.5.59'
 	}
 }
 
