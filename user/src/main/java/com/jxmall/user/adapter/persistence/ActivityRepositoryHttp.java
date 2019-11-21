@@ -6,7 +6,6 @@ import com.jxmall.user.domain.aggregate.activity.ActivityRepository;
 import com.jxmall.user.domain.aggregate.activity.root.Activity;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 

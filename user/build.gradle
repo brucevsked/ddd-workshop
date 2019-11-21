@@ -18,8 +18,18 @@ repositories {
 	mavenCentral()
 }
 
+dependencyManagement {
+	imports {
+		mavenBom 'om.huawei.paas.cse:cse-dependency:6.5.59'
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation ('com.huawei.paas.cse-solution-service-engine:') {
+		exclude group: 'com.huawei.paas.cse', module :'cse-handler-tcc'
+	}
+	implementation 'com.huawei.paas.cse:cse-handler-tracing'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
