@@ -1,2 +1,5 @@
 server:
   port: 9005
+spring:
+  main:
+    web-application-type: none

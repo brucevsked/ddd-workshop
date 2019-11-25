@@ -13,3 +13,6 @@ activity:
     server:
       api:
         source: http://localhost:9002/jxmall/activity_benefits/source/{source}
+spring:
+  main:
+    web-application-type: none

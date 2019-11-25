@@ -4,3 +4,6 @@ activity:
   server:
     api:
       create: http://localhost:9001/jxmall/activities
+spring:
+  main:
+    web-application-type: none
