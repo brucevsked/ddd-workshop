@@ -12,6 +12,8 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.jxmall.activity.channel.application.ActivityChannelApplication;
 import com.jxmall.activity.channel.domain.aggregate.activity.root.ActivityChannel;
 
@@ -28,11 +30,10 @@ public class ActivityChannelController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@RequestBody ActivityChannel activitieChannel, UriComponentsBuilder builder) {
+    public ResponseEntity create(@RequestBody ActivityChannel activitieChannel, HttpServletRequest request) {
         activityChannelApplication.create(activitieChannel);
-        return ResponseEntity
-                .created(builder.path("/activity_channels/{id}").buildAndExpand(activitieChannel.getId()).toUri())
-                .build();
+        return ResponseEntity.created(UriComponentsBuilder.newInstance().path("/activity_channels/{id}")
+                .buildAndExpand(activitieChannel.getId()).toUri()).build();
     }
 
     @RequestMapping(path = "/{id}")

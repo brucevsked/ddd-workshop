@@ -28,13 +28,16 @@ public class UserController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> create(@RequestBody User user, UriComponentsBuilder builder) {
+    public ResponseEntity<String> create(@RequestBody User user) {
         userApplication.create(user);
-        return ResponseEntity.created(builder.path("/users/{id}").buildAndExpand(user.getId()).toUri()).build();
+        return ResponseEntity
+                .created(UriComponentsBuilder.newInstance().path("/users/{id}").buildAndExpand(user.getId()).toUri())
+                .build();
     }
 
     @RequestMapping(path = "/{id}")
     public ResponseEntity<User> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(userApplication.findById(id));
     }
+
 }

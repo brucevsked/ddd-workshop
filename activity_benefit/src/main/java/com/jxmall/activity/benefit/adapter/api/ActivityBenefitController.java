@@ -31,10 +31,10 @@ public class ActivityBenefitController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@RequestBody ActivityBenefit activitie, UriComponentsBuilder builder) {
+    public ResponseEntity create(@RequestBody ActivityBenefit activitie) {
         activityBenefitApplication.create(activitie);
-        return ResponseEntity.created(builder.path("/activity_benefit/{id}").buildAndExpand(activitie.getId()).toUri())
-                .build();
+        return ResponseEntity.created(UriComponentsBuilder.newInstance().path("/activity_benefit/{id}")
+                .buildAndExpand(activitie.getId()).toUri()).build();
     }
 
     @RequestMapping(path = "/{id}")

@@ -23,9 +23,9 @@ public class ActivityRepositoryHttp implements ActivityRepository {
     @Override
     public void create(Activity activity) {
 
-        URI uri = client.postForLocation(createApi, activity);
+        client.postForLocation(createApi, activity);
 
         // 暂时不处理返回的URI
-        log.info("{}://{}:{}{}", uri.getScheme(), uri.getHost(), uri.getPort(), uri.getPath());
+        //log.info("{}://{}:{}{}", uri.getScheme(), uri.getHost(), uri.getPort(), uri.getPath());
     }
 }

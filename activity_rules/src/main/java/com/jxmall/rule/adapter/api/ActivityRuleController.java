@@ -31,9 +31,10 @@ public class ActivityRuleController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> create(@RequestBody ActivityRule rule, UriComponentsBuilder builder) {
+    public ResponseEntity<String> create(@RequestBody ActivityRule rule) {
         activityRuleApplication.create(rule);
-        return ResponseEntity.created(builder.path("/activity_rules/{id}").buildAndExpand(rule.getId()).toUri())
+        return ResponseEntity.created(
+                UriComponentsBuilder.newInstance().path("/activity_rules/{id}").buildAndExpand(rule.getId()).toUri())
                 .build();
     }
 

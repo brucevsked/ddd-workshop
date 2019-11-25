@@ -31,9 +31,9 @@ public class ActivityController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<String> create(@RequestBody Activity activity, UriComponentsBuilder builder) {
+    public ResponseEntity<String> create(@RequestBody Activity activity) {
         activityApplication.create(activity);
-        return ResponseEntity.created(builder.path("/jxmall/activitys/{id}").buildAndExpand(activity.getId()).toUri())
+        return ResponseEntity.created(UriComponentsBuilder.newInstance().path("/jxmall/activitys/{id}").buildAndExpand(activity.getId()).toUri())
                 .build();
     }
 

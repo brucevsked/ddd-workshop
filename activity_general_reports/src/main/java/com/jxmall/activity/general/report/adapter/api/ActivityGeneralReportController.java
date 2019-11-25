@@ -28,12 +28,10 @@ public class ActivityGeneralReportController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity create(@RequestBody ActivityGeneralReport activitieGeneralReport,
-            UriComponentsBuilder builder) {
+    public ResponseEntity create(@RequestBody ActivityGeneralReport activitieGeneralReport) {
         activityGeneralReportApplication.create(activitieGeneralReport);
-        return ResponseEntity.created(
-                builder.path("/activity_general_reports/{id}").buildAndExpand(activitieGeneralReport.getId()).toUri())
-                .build();
+        return ResponseEntity.created(UriComponentsBuilder.newInstance().path("/activity_general_reports/{id}")
+                .buildAndExpand(activitieGeneralReport.getId()).toUri()).build();
     }
 
     @RequestMapping(path = "/{id}")
