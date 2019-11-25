@@ -81,7 +81,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring-boot.version}</version>
 				<configuration>
-					<mainClass>com.jxmall.user.ActivityRuleServerApplication</mainClass>
+					<mainClass>com.jxmall.rule.ActivityRuleServerApplication</mainClass>
 				</configuration>
 				<executions>
                     <execution>

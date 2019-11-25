@@ -81,7 +81,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring-boot.version}</version>
 				<configuration>
-					<mainClass>com.jxmall.user.ActivityGeneralReportServerApplication</mainClass>
+					<mainClass>com.jxmall.activity.general.report.ActivityGeneralReportServerApplication</mainClass>
 				</configuration>
 				<executions>
                     <execution>

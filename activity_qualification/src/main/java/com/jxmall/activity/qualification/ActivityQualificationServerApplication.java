@@ -1,4 +1,4 @@
-package com.jxmall.activity.qualification.application;
+package com.jxmall.activity.qualification;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

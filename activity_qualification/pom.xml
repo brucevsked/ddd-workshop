@@ -81,7 +81,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${spring-boot.version}</version>
 				<configuration>
-					<mainClass>com.jxmall.user.ActivityQualificationServerApplication</mainClass>
+					<mainClass>com.jxmall.activity.qualification.ActivityQualificationServerApplication</mainClass>
 				</configuration>
 				<executions>
                     <execution>
