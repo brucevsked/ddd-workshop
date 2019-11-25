@@ -2,11 +2,10 @@ package com.jxmall.rule.adapter.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -26,23 +25,24 @@ public class ActivityRuleController {
     @Autowired
     private ActivityRuleApplication activityRuleApplication;
 
-    @GetMapping
+    @RequestMapping
     public ResponseEntity<List<ActivityRule>> search(@RequestParam("key") String key) {
         return ResponseEntity.ok(activityRuleApplication.search(key));
     }
 
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> create(@RequestBody ActivityRule rule, UriComponentsBuilder builder) {
         activityRuleApplication.create(rule);
-        return ResponseEntity.created(builder.path("/activity_rules/{id}").buildAndExpand(rule.getId()).toUri()).build();
+        return ResponseEntity.created(builder.path("/activity_rules/{id}").buildAndExpand(rule.getId()).toUri())
+                .build();
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(path = "/{id}")
     public ResponseEntity<ActivityRule> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityRuleApplication.findById(id));
     }
 
-    @GetMapping("/month/{month}")
+    @RequestMapping(path = "/month/{month}")
     public ResponseEntity<ActivityRule> findByMonth(@PathVariable("month") int month) {
         log.debug("month:{}", month);
         return ResponseEntity.ok(activityRuleApplication.findByMonth(month));

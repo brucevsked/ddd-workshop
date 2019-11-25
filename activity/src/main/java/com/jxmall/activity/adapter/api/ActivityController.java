@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -24,19 +25,19 @@ public class ActivityController {
     @Autowired
     private ActivityApplication activityApplication;
 
-    @GetMapping
+    @RequestMapping
     public ResponseEntity<List<Activity>> search(@RequestParam("key") String key) {
         return ResponseEntity.ok(activityApplication.search(key));
     }
 
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<String> create(@RequestBody Activity activity, UriComponentsBuilder builder) {
         activityApplication.create(activity);
         return ResponseEntity.created(builder.path("/jxmall/activitys/{id}").buildAndExpand(activity.getId()).toUri())
                 .build();
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(path = "/{id}")
     public ResponseEntity<Activity> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityApplication.findById(id));
     }

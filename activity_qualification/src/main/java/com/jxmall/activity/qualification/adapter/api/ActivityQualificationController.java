@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -26,25 +27,26 @@ public class ActivityQualificationController {
     @Autowired
     private ActivityQualificationApplication activityQualificationApplication;
 
-    @GetMapping
+    @RequestMapping
     public ResponseEntity<List<ActivityQualification>> search(@RequestParam("key") String key) {
         return ResponseEntity.ok(activityQualificationApplication.search(key));
     }
 
-    @PostMapping
+    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity create(@RequestBody ActivityQualification activitie, UriComponentsBuilder builder) {
         activityQualificationApplication.create(activitie);
-        return ResponseEntity.created(builder.path("/activity_qualifications/{id}").buildAndExpand(activitie.getId()).toUri())
+        return ResponseEntity
+                .created(builder.path("/activity_qualifications/{id}").buildAndExpand(activitie.getId()).toUri())
                 .build();
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(path = "/{id}")
     public ResponseEntity<ActivityQualification> findById(@PathVariable("id") String id) {
         return ResponseEntity.ok(activityQualificationApplication.findById(id));
     }
 
-    @GetMapping("/current-date")
-    public ResponseEntity<ActivityQualification> getCurrentActivityQualification(){
+    @RequestMapping(path = "/current-date")
+    public ResponseEntity<ActivityQualification> getCurrentActivityQualification() {
         log.debug("current-data");
         return ResponseEntity.ok(activityQualificationApplication.getCurrentActivityQualification());
     }
