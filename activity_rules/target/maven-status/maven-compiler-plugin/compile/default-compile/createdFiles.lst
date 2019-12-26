@@ -1,0 +1,8 @@
+com/jxmall/rule/ActivityRuleServerApplication.class
+com/jxmall/rule/domain/aggregate/rule/root/ActivityRule$ActivityRuleBuilder.class
+com/jxmall/rule/domain/aggregate/rule/ActivityRuleRepository.class
+com/jxmall/rule/application/ActivityRuleApplication.class
+com/jxmall/rule/domain/aggregate/rule/root/ActivityRule.class
+com/jxmall/rule/adapter/persistence/ActivityRuleRepositoryCache.class
+com/jxmall/rule/domain/aggregate/rule/ActivityRuleService.class
+com/jxmall/rule/adapter/api/ActivityRuleController.class

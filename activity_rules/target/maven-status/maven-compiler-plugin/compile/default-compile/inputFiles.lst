@@ -1,0 +1,7 @@
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/application/ActivityRuleApplication.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/adapter/api/ActivityRuleController.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/ActivityRuleServerApplication.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/adapter/persistence/ActivityRuleRepositoryCache.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/domain/aggregate/rule/ActivityRuleService.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/domain/aggregate/rule/root/ActivityRule.java
+/Users/cbwu/code/workshop/ddd-workshop/activity_rules/src/main/java/com/jxmall/rule/domain/aggregate/rule/ActivityRuleRepository.java
